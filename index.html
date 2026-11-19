@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>마음로그 2주 테스터 모집 · 최대 25,000원 카페 기프티콘</title>
+<meta name="description" content="마음로그 2주 테스터를 모집합니다. 2주간 마음을 기록하고 카페 기프티콘 받아가세요. 선착순 500명.">
+<meta property="og:title" content="마음로그 2주 테스터 모집 (선착순 500명)">
+<meta property="og:description" content="참여 등록만 해도 5천원, 2주간 꾸준히 기록하면 최대 2만 5천원 카페 기프티콘">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EA5060">
+<link rel="icon" href="/assets/logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<script src="/config.js"></script>
+<!-- Vercel Web Analytics (대시보드에서 Analytics 활성화 필요) -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+  /* 마음로그 브랜드 토큰 (Figma: MindLog/*, gray/*) */
+  :root{
+    --brand:#EA5060;      /* MindLog/main */
+    --pink-100:#FDF1F2; --pink-200:#F8C9CE; --pink-300:#F18A94; --pink-400:#A63944; --pink-500:#622228;
+    --sub2:#FEF7F8;       /* MindLog/sub2 */
+    --ink:#222222; --ink-2:#3B3B3B; --sub:#5F5F5F; --mute:#898989; --line:#E8E8E8;
+    --shadow:0 6px 24px rgba(234,80,96,.10), 0 1px 3px rgba(0,0,0,.04);
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+       background:#fff;color:var(--ink);line-height:1.6;letter-spacing:-.02em;word-break:keep-all;-webkit-tap-highlight-color:transparent}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:560px;margin:0 auto;padding:0 20px}
+  section{padding:48px 0 8px}
+  .band{background:var(--sub2);margin-top:48px}
+  .band section{padding-bottom:48px}
+
+  /* 섹션 헤더: Figma 제안서 "제안 배경 / Background ———" 형식 */
+  .sec-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
+  .sec-head .ko{font-size:14px;font-weight:700;color:var(--brand);line-height:1.3}
+  .sec-head .en{display:block;font-size:11px;font-weight:500;color:var(--mute);letter-spacing:0}
+  .sec-head::after{content:"";flex:1;height:1px;background:var(--pink-300);margin-top:9px}
+  h2{font-size:24px;font-weight:700;letter-spacing:-.03em;line-height:1.35;margin-bottom:6px}
+  h2 b{color:var(--brand)}
+  .lead{color:var(--sub);font-size:15px;margin-bottom:22px}
+
+  /* TOP NAV (PC) */
+  .topnav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
+          -webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:none}
+  .topnav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
+  .logo img{width:28px;height:28px}
+  .logo span{color:var(--brand)}
+  .links{display:flex;align-items:center;gap:28px;font-size:15px;color:var(--sub);font-weight:600}
+  .links a:hover{color:var(--brand)}
+  .links .nav-cta{background:var(--brand);color:#fff;padding:9px 20px;border-radius:999px;font-weight:700}
+  .links .nav-cta:hover{color:#fff}
+
+  /* HERO: Figma 표지의 코랄 그라데이션 + 물결 */
+  .hero{position:relative;overflow:hidden;color:#fff;padding:40px 0 40px;
+        background:linear-gradient(120deg,#E8455A 0%,#EA5060 45%,#F07F8B 100%)}
+  .hero .waves{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-areas:"copy" "stats" "cta"}
+  .hero-copy{grid-area:copy}.hero-stats{grid-area:stats}.hero-cta{grid-area:cta}.hero-visual{display:none}
+  .company{font-size:14px;opacity:.9;margin-bottom:20px}
+  .pill{display:inline-block;background:#fff;color:var(--brand);font-size:13px;font-weight:700;
+        padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .brandline{display:flex;align-items:center;gap:12px;font-size:30px;font-weight:800;letter-spacing:-.03em}
+  .brandline img{width:44px;height:44px}
+  .hero h1{font-size:40px;line-height:1.25;font-weight:800;letter-spacing:-.04em;margin:8px 0 14px}
+  .hero h1 small{display:block;font-size:30px;font-weight:300;letter-spacing:-.03em}
+  .hero p{font-size:15px;opacity:.95}
+  .hero p b{font-weight:800}
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:24px}
+  .hero-stats div{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:12px 6px;text-align:center}
+  .hero-stats strong{display:block;font-size:17px;font-weight:800}
+  .hero-stats span{font-size:12px;opacity:.88}
+
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:56px;border-radius:999px;
+       font-size:17px;font-weight:700;border:0;cursor:pointer;transition:transform .12s ease}
+  .btn:active{transform:scale(.98)}
+  .btn-white{background:#fff;color:var(--brand);box-shadow:0 8px 24px rgba(98,34,40,.18)}
+  .btn-brand{background:var(--brand);color:#fff;box-shadow:0 6px 18px rgba(234,80,96,.28)}
+  .btn-line{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .hero .btn{margin-top:22px}
+
+  /* REWARD */
+  .rewards{display:flex;flex-direction:column;gap:12px}
+  .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow)}
+  .reward{padding:20px;display:flex;flex-direction:column;gap:8px}
+  .reward .no{align-self:flex-start;font-size:12px;font-weight:800;color:var(--brand);background:var(--pink-100);
+              border-radius:999px;padding:4px 10px}
+  .reward h3{font-size:16px;font-weight:700;line-height:1.45}
+  .reward h3 u{text-decoration:none;color:var(--brand)}
+  .reward p{font-size:14px;color:var(--sub);margin-top:2px}
+  .reward .amt{font-weight:800;font-size:24px;color:var(--brand);letter-spacing:-.03em}
+  .total{margin-top:14px;background:var(--brand);color:#fff;border-radius:var(--radius);padding:20px 22px;display:flex;
+         justify-content:space-between;align-items:center}
+  .total > span{font-size:15px;font-weight:600}
+  .total strong{font-size:24px;font-weight:800}
+
+  /* STEPS */
+  .steps{display:flex;flex-direction:column;gap:12px}
+  .step{padding:22px 20px}
+  .step-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .step-head .n{width:28px;height:28px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;
+                font-size:14px;font-weight:800;flex:none}
+  .step-head h3{font-size:17px;font-weight:700}
+  .step p{font-size:14.5px;color:var(--sub)}
+  .hint{margin-top:12px;font-size:13.5px;background:var(--pink-100);color:var(--pink-400);border-radius:12px;padding:10px 12px}
+  .hint b{color:var(--brand)}
+  .step .btn{margin-top:14px;height:50px;font-size:16px}
+  .store-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+  .store-row .btn{margin-top:0}
+
+  /* TIMELINE */
+  .timeline{padding:6px 20px}
+  .tl{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .tl:last-child{border-bottom:0}
+  .tl span{color:var(--sub)}
+  .tl strong{font-weight:700;text-align:right}
+  .tl.hl strong{color:var(--brand)}
+  /* Figma 말풍선 카드 */
+  .bubble{position:relative;margin-top:18px;padding:16px 18px;font-size:14px;color:var(--ink-2)}
+  .bubble::before{content:"";position:absolute;left:24px;top:-7px;width:14px;height:14px;background:#fff;transform:rotate(45deg)}
+  .bubble b{color:var(--brand)}
+  .bubble p+p{margin-top:8px}
+
+  /* NOTICE / FAQ */
+  .notice{padding:20px 20px 20px 22px}
+  .notice li{font-size:14px;color:var(--sub);margin:0 0 8px 14px}
+  .notice li::marker{color:var(--brand)}
+  .notice li:last-child{margin-bottom:0}
+  details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:8px;overflow:hidden}
+  details[open]{border-color:var(--pink-200)}
+  summary{list-style:none;cursor:pointer;padding:16px 44px 16px 18px;font-weight:700;font-size:15px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--brand);font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{padding:0 18px 16px;font-size:14px;color:var(--sub)}
+
+  footer{border-top:1px solid var(--line);padding:32px 0 120px;font-size:13px;color:var(--mute)}
+  footer .f-logo{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--ink);font-size:15px;margin-bottom:8px}
+  footer .f-logo img{width:22px;height:22px}
+  footer a{text-decoration:underline}
+  footer .copy{margin-top:12px;font-size:12px}
+
+  /* STICKY CTA (모바일) */
+  .sticky{position:fixed;left:0;right:0;bottom:0;padding:12px 20px calc(12px + env(safe-area-inset-bottom));
+          background:linear-gradient(to top,#fff 70%,rgba(255,255,255,0));z-index:10;transform:translateY(110%);transition:transform .25s ease}
+  .sticky.show{transform:none}
+  .sticky .inner{max-width:520px;margin:0 auto}
+
+  /* ===== 태블릿 이상 ===== */
+  @media (min-width:768px){
+    .wrap{max-width:1120px;padding:0 32px}
+    section{padding:80px 0 8px}
+    .band{margin-top:80px}
+    .band section{padding-bottom:80px}
+    h2{font-size:32px}
+    .lead{font-size:17px;margin-bottom:32px}
+    .sec-head .ko{font-size:16px}
+    .sec-head .en{font-size:12px}
+    .rewards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .reward{padding:28px 24px}
+    .reward h3{font-size:17px}
+    .reward .amt{font-size:28px;margin-top:auto;padding-top:10px}
+    .total{padding:26px 32px;margin-top:20px}
+    .total strong{font-size:30px}
+    .step{display:flex;flex-direction:column;padding:28px 24px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+    .faq-list{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;align-items:start}
+    footer{padding:40px 0 56px}
+    .btn{width:auto;padding:0 36px}
+    .step .btn,.store-row .btn,.sticky .btn{width:100%;padding:0 12px;white-space:nowrap}
+  }
+  @media (min-width:960px){
+    .topnav{display:block}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+    .step .btn,.store-row{margin-top:auto}
+    .step .hint{margin-bottom:16px}
+    .step:last-child .hint{margin:auto 0 0}
+    .hero{padding:72px 0 0}
+    .hero-grid{grid-template-columns:1.15fr .85fr;grid-template-areas:"copy visual" "stats visual" "cta visual";column-gap:48px}
+    .hero-visual{display:block;grid-area:visual;align-self:end;justify-self:center;width:330px;margin-bottom:-90px;
+                 filter:drop-shadow(0 24px 48px rgba(98,34,40,.30))}
+    .company{font-size:16px;margin-bottom:32px}
+    .brandline{font-size:48px;gap:16px}
+    .brandline img{width:64px;height:64px}
+    .hero h1{font-size:68px;margin:10px 0 18px}
+    .hero h1 small{font-size:48px}
+    .hero p{font-size:18px}
+    .hero-stats{max-width:540px;margin-top:32px}
+    .hero-stats strong{font-size:22px}
+    .hero-stats span{font-size:14px}
+    .hero-cta{justify-self:start;height:60px;font-size:18px;margin:32px 0 80px}
+    .sticky{display:none}
+    html{scroll-behavior:smooth;scroll-padding-top:72px}
+    #reward{padding-top:120px}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.sticky,.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="wrap">
+  <a class="logo" href="#"><img src="/assets/logo.png" alt="">마음로그 <span>2주 테스터</span></a>
+  <div class="links"><a href="#reward">리워드</a><a href="#how">참여 방법</a><a href="#schedule">일정</a><a href="#faq">FAQ</a>
+  <a class="nav-cta" href="/go/form">테스터 신청</a></div>
+</div></nav>
+
+<header class="hero">
+  <svg class="waves" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M-100 170 C 300 40, 620 280, 1000 130 S 1500 60, 1600 80 L1600 -50 L-100 -50Z" fill="#fff" opacity=".07"/>
+    <path d="M-100 640 C 260 430, 620 780, 980 540 S 1500 380, 1600 470 L1600 900 L-100 900Z" fill="#fff" opacity=".08"/>
+    <path d="M760 900 C 940 620, 1220 520, 1600 300 L1600 900Z" fill="#fff" opacity=".07"/>
+  </svg>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="company">(주)정션메드</div>
+      <span class="pill">선착순 <span data-c="CAPACITY_TXT">500명</span> · 카페 기프티콘 증정</span>
+      <div class="brandline"><img src="/assets/logo-white.png" alt="">마음로그:</div>
+      <h1><small>2주 테스터</small>모집합니다</h1>
+      <p>2주 동안 마음로그로 오늘의 마음을 기록해 주세요.<br>참여만 해도 <b data-c="R1_TXT">5,000원</b>, 꾸준히 기록하면 <b>최대 <span data-c="TOTAL_TXT">25,000원</span></b></p>
+    </div>
+    <div class="hero-stats">
+      <div><strong data-c="R1_TXT">5,000원</strong><span>참여 등록</span></div>
+      <div><strong>7일·10일</strong><span>기록 미션</span></div>
+      <div><strong data-c="PAYOUT_SHORT">12/14~15</strong><span>일괄 발송</span></div>
+    </div>
+    <a class="btn btn-white hero-cta" href="/go/form">2주 테스터 신청하기 →</a>
+    <img class="hero-visual" src="/assets/app-screen.png" alt="마음로그 앱 감정 기록 화면">
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="reward">
+    <div class="sec-head"><div class="ko">리워드<span class="en">Reward</span></div></div>
+    <h2>미션을 달성할 때마다<br><b>카페 기프티콘</b>을 드려요</h2>
+    <p class="lead">미션은 차례로 쌓이며, 달성한 만큼 모두 받아요.</p>
+    <div class="rewards">
+      <div class="card reward">
+        <span class="no">미션 01</span>
+        <h3>동의서·사전설문 작성 + 마음로그 가입 + 기관코드 연결</h3>
+        <p>참여 등록만 마치면 바로 달성</p>
+        <div class="amt" data-c="R1_TXT">5,000원</div>
+      </div>
+      <div class="card reward">
+        <span class="no">미션 02</span>
+        <h3>테스트 기간 중 <u>7일 이상</u> 기록 + 보고서 생성 7일</h3>
+        <p><span data-c="USE_PERIOD">11/28(토) ~ 12/11(금)</span> 기록만 인정</p>
+        <div class="amt" data-c="R2_TXT">10,000원</div>
+      </div>
+      <div class="card reward">
+        <span class="no">미션 03</span>
+        <h3>테스트 기간 중 <u>10일 이상</u> 기록 + 보고서 생성 10일 이상</h3>
+        <p>미션 02에 더해 추가 지급</p>
+        <div class="amt" data-c="R3_TXT">+10,000원</div>
+      </div>
+    </div>
+    <div class="total"><span>모두 달성하면</span><strong>최대 <span data-c="TOTAL_TXT">25,000원</span></strong></div>
+  </section>
+</main>
+
+<div class="band"><div class="wrap">
+  <section id="how">
+    <div class="sec-head"><div class="ko">참여 방법<span class="en">How to join</span></div></div>
+    <h2><b>3단계</b>면 테스터 등록 끝</h2>
+    <p class="lead">5분 정도 걸려요. 순서대로 진행해 주세요.</p>
+    <div class="steps">
+      <div class="card step">
+        <div class="step-head"><span class="n">1</span><h3>동의서 · 사전설문 작성</h3></div>
+        <p>연구 참여 동의서와 간단한 사전설문을 작성해 주세요. 기프티콘은 여기 적은 휴대폰 번호로 보내드려요.</p>
+        <div class="hint">제출 완료 화면에서 <b>기관코드</b>를 확인할 수 있어요. 꼭 메모하거나 캡처해 두세요.</div>
+        <a class="btn btn-brand" href="/go/form">동의서 · 설문 작성하기</a>
+      </div>
+      <div class="card step">
+        <div class="step-head"><span class="n">2</span><h3>마음로그 앱 설치 · 회원가입</h3></div>
+        <p>사용하는 휴대폰에 맞는 스토어에서 마음로그를 설치하고 가입해 주세요.</p>
+        <div class="store-row">
+          <a class="btn btn-line" href="/go/ios">App Store</a>
+          <a class="btn btn-line" href="/go/android">Google Play</a>
+        </div>
+      </div>
+      <div class="card step">
+        <div class="step-head"><span class="n">3</span><h3>앱에서 기관코드 입력</h3></div>
+        <p>1단계에서 받은 기관코드를 앱에 입력하면 테스터 등록이 끝나요. 코드를 입력해야 기록이 집계돼요.</p>
+        <div class="hint">여기까지 하면 <b>미션 01 달성!</b> 기록은 <b data-c="USE_START">11/28(토)</b>부터 집계되니, 그날부터 매일 기록하고 보고서를 만들어 주세요.</div>
+      </div>
+    </div>
+  </section>
+</div></div>
+
+<main class="wrap">
+  <div class="two-col">
+  <section id="schedule">
+    <div class="sec-head"><div class="ko">일정<span class="en">Schedule</span></div></div>
+    <h2>언제까지 하면 되나요?</h2>
+    <p class="lead">기프티콘은 테스트 기간이 끝난 뒤 한 번에 보내드려요.</p>
+    <div class="card timeline">
+      <div class="tl"><span>모집 인원</span><strong>선착순 <span data-c="CAPACITY_TXT">500명</span></strong></div>
+      <div class="tl hl"><span>테스트 기간 (집계 기간)</span><strong data-c="USE_PERIOD">11/28(토) ~ 12/11(금)</strong></div>
+      <div class="tl"><span>마지막 기록 인정일</span><strong data-c="LAST_DAY">12/11(금)</strong></div>
+      <div class="tl"><span>기프티콘 발송</span><strong data-c="PAYOUT">12/14(월) ~ 12/15(화)</strong></div>
+    </div>
+    <div class="card bubble">
+      <p><b data-c="USE_START">11/28(토)</b> 이전에 가입·기록한 내용은 집계되지 않아요. 미리 등록만 해 두고 <b data-c="USE_START">11/28(토)</b>부터 기록을 시작해 주세요.</p>
+      <p><b>7일 미션</b>은 늦어도 <b>12/5(토)</b>, <b>10일 미션</b>은 <b>12/2(수)</b>부터 매일 기록해야 달성할 수 있어요.</p>
+    </div>
+  </section>
+
+  <section id="notice">
+    <div class="sec-head"><div class="ko">유의사항<span class="en">Notice</span></div></div>
+    <h2>꼭 확인해 주세요</h2>
+    <p class="lead">참여 전 아래 내용을 확인해 주세요.</p>
+    <div class="card notice">
+      <ul>
+        <li>선착순 <span data-c="CAPACITY_TXT">500명</span>이 채워지면 모집이 조기 마감될 수 있어요.</li>
+        <li>기록일과 보고서 생성일은 테스트 기간(<span data-c="USE_PERIOD">11/28(토) ~ 12/11(금)</span>) 안의 기록만 인정되며, 기관코드가 연결된 계정 기준으로 집계돼요.</li>
+        <li>하루에 여러 번 기록해도 기록일은 1일로 집계돼요.</li>
+        <li>휴대폰 번호를 잘못 적으면 기프티콘을 받을 수 없어요. 제출 전에 한 번 더 확인해 주세요.</li>
+        <li>1인 1회만 참여할 수 있으며, 중복·부정 참여가 확인되면 지급 대상에서 제외돼요.</li>
+        <li>기프티콘 종류는 운영 사정에 따라 동일 금액의 다른 카페 상품으로 바뀔 수 있어요.</li>
+      </ul>
+    </div>
+  </section>
+  </div>
+
+  <section id="faq" style="padding-bottom:64px">
+    <div class="sec-head"><div class="ko">자주 묻는 질문<span class="en">FAQ</span></div></div>
+    <h2>궁금한 점이 있나요?</h2>
+    <p class="lead">더 궁금한 점은 아래 문의처로 연락 주세요.</p>
+    <div class="faq-list">
+      <details><summary>기관코드를 잊어버렸어요.</summary>
+        <p>구글폼 제출 완료 화면에서만 안내돼요. 다시 확인이 필요하면 아래 문의처로 동의서에 적은 이름과 휴대폰 번호를 보내주세요.</p></details>
+      <details><summary>지금 신청해도 되나요?</summary>
+        <p>네, 동의서 작성과 앱 가입·기관코드 연결은 미리 해두셔도 돼요(미션 01). 다만 기록과 보고서는 <span data-c="USE_START">11/28(토)</span>부터 한 것만 집계돼요.</p></details>
+      <details><summary>이미 마음로그를 쓰고 있어요. 테스터로 참여할 수 있나요?</summary>
+        <p>네. 동의서·사전설문을 작성한 뒤 기존 계정에 기관코드만 연결하면 돼요.</p></details>
+      <details><summary>보고서 생성은 어떻게 하나요?</summary>
+        <p>앱에서 오늘의 기록을 마친 뒤 보고서를 생성하면 그날의 보고서 생성일로 집계돼요.</p></details>
+      <details><summary>미션 달성 여부는 어떻게 알 수 있나요?</summary>
+        <p>테스트 기간 종료 후 기록을 기준으로 확인해 대상자에게 일괄 발송해요.</p></details>
+      <details><summary>개인정보는 어떻게 쓰이나요?</summary>
+        <p>동의서에 안내된 목적(연구 및 리워드 지급) 범위 안에서만 쓰이며, 자세한 내용은 동의서에서 확인할 수 있어요.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div class="f-logo"><img src="/assets/logo.png" alt="">마음로그 · (주)정션메드</div>
+  <p data-c="CONTACT_NAME">정션메드 AX 실증사업 담당</p>
+  <p>문의 <a data-c-href="mailto" data-c="CONTACT_EMAIL" href="#">이메일</a><span id="kakao-wrap"></span></p>
+  <p class="copy">Copyright © Junction Med. All Rights Reserved.</p>
+</div></footer>
+
+<div class="sticky" id="sticky"><div class="inner">
+  <a class="btn btn-brand" href="/go/form">2주 테스터 신청하기 · 선착순 <span data-c="CAPACITY_TXT">500명</span></a>
+</div></div>
+
+<script>
+(function(){
+  var C = window.CONFIG || {};
+  var won = function(n){ return Number(n).toLocaleString('ko-KR') + '원'; };
+  var total = (C.REWARD_1||0) + (C.REWARD_2||0) + (C.REWARD_3||0);
+  var map = {
+    CAPACITY_TXT: (C.CAPACITY||500).toLocaleString('ko-KR') + '명',
+    TOTAL_TXT: won(total),
+    R1_TXT: won(C.REWARD_1), R2_TXT: won(C.REWARD_2), R3_TXT: '+' + won(C.REWARD_3),
+    USE_PERIOD: C.USE_PERIOD, USE_START: C.USE_START, LAST_DAY: C.LAST_DAY, PAYOUT: C.PAYOUT,
+    PAYOUT_SHORT: (C.PAYOUT||'').replace(/\([^)]*\)/g,'').replace(/\s/g,''),
+    CONTACT_NAME: C.CONTACT_NAME, CONTACT_EMAIL: C.CONTACT_EMAIL
+  };
+  document.querySelectorAll('[data-c]').forEach(function(el){
+    var v = map[el.getAttribute('data-c')]; if (v) el.textContent = v;
+  });
+  var mail = document.querySelector('[data-c-href="mailto"]');
+  if (mail && C.CONTACT_EMAIL) mail.href = 'mailto:' + C.CONTACT_EMAIL;
+  if (C.CONTACT_KAKAO) document.getElementById('kakao-wrap').innerHTML =
+    ' · <a href="' + C.CONTACT_KAKAO + '" target="_blank" rel="noopener">카카오톡 채널</a>';
+  document.title = '마음로그 2주 테스터 모집 · 최대 ' + won(total) + ' 카페 기프티콘';
+
+  var sticky = document.getElementById('sticky');
+  new IntersectionObserver(function(e){ sticky.classList.toggle('show', !e[0].isIntersecting); })
+    .observe(document.querySelector('.hero'));
+})();
+</script>
+</body>
+</html>
