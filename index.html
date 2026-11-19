@@ -105,7 +105,15 @@
   .reward .amt{font-weight:800;font-size:24px;color:var(--brand);letter-spacing:-.03em}
   .total{margin-top:14px;background:var(--brand);color:#fff;border-radius:var(--radius);padding:20px 22px;display:flex;
          justify-content:space-between;align-items:center}
-  .total > span{font-size:15px;font-weight:600}
+  .total{gap:12px;flex-wrap:wrap}
+  .total > span{flex:1 1 220px}
+  .total strong{margin-left:auto}
+  .total > span{font-size:15px;font-weight:600;line-height:1.75}
+  .total strong{flex:none}
+  .total .post-chip{display:inline-block;background:#fff;color:#4233EE;font-size:13px;font-weight:800;border-radius:999px;
+                    padding:1px 10px;margin-right:2px;white-space:nowrap}
+  .total .post-chip em{font-style:normal}
+  .total-note{margin-top:10px;font-size:13px;color:var(--sub)}
   .total strong{font-size:24px;font-weight:800}
 
   /* STEPS */
@@ -118,6 +126,15 @@
   .step p{font-size:14.5px;color:var(--sub)}
   .hint{margin-top:12px;font-size:13.5px;background:var(--pink-100);color:var(--pink-400);border-radius:12px;padding:10px 12px}
   .hint b{color:var(--brand)}
+  /* 마지막 단계: 사후설문 */
+  .post-sep{display:flex;align-items:center;gap:10px;margin:22px 0 12px;font-size:13px;font-weight:700;color:#4233EE}
+  .post-sep::before,.post-sep::after{content:"";flex:1;height:1px;background:#CFD3FF}
+  .step.post{border:2px solid #4233EE}
+  .step.post .n{background:#4233EE}
+  .step.post .hint{background:#EEF0FF;color:#22198A}
+  .step.post .hint b{color:#4233EE}
+  .btn-post{background:#4233EE;color:#fff;box-shadow:0 6px 18px rgba(66,51,238,.28)}
+  .btn-post[aria-disabled="true"]{background:#E4E6F5;color:#7A7FA8;box-shadow:none;pointer-events:none}
   .step .btn{margin-top:14px;height:50px;font-size:16px}
 
   /* 설문 완료 후 돌아온 사람(/done)에게 2단계 강조 */
@@ -148,6 +165,7 @@
   .tl span{color:var(--sub)}
   .tl strong{font-weight:700;text-align:right}
   .tl.hl strong{color:var(--brand)}
+  .tl.post strong{color:#4233EE}
   /* Figma 말풍선 카드 */
   .bubble{position:relative;margin-top:18px;padding:16px 18px;font-size:14px;color:var(--ink-2)}
   .bubble::before{content:"";position:absolute;left:24px;top:-7px;width:14px;height:14px;background:#fff;transform:rotate(45deg)}
@@ -294,7 +312,11 @@
         <div class="amt" data-c="R3_TXT">+10,000원</div>
       </div>
     </div>
-    <div class="total"><span>모두 달성하면</span><strong>최대 <span data-c="TOTAL_TXT">25,000원</span></strong></div>
+    <div class="total">
+      <span>미션을 모두 달성하고<br><b class="post-chip">사후설문 <em data-c="POST_PERIOD">12/11(금) ~ 12/13(일)</em></b>까지 완료하면</span>
+      <strong>최대 <span data-c="TOTAL_TXT">25,000원</span></strong>
+    </div>
+    <p class="total-note">※ 사전설문과 사후설문을 모두 제출해야 기프티콘이 지급돼요.</p>
   </section>
 </main>
 
@@ -330,6 +352,13 @@
         <div class="hint">여기까지 하면 <b>미션 01 달성!</b> 기록은 <b data-c="USE_START">11/28(토)</b>부터 집계되니, 그날부터 매일 기록하고 보고서를 만들어 주세요.</div>
       </div>
     </div>
+    <div class="post-sep">테스트 마지막 날부터</div>
+    <div class="card step post" id="post">
+      <div class="step-head"><span class="n">4</span><h3>사후설문 작성 · 마지막 단계</h3></div>
+      <p>테스트 마지막 날부터 짧은 사후설문을 작성해 주세요. <b style="color:#22198A">사후설문까지 제출해야 기프티콘이 지급돼요.</b></p>
+      <div class="hint">작성 기간: <b data-c="POST_PERIOD">12/11(금) ~ 12/13(일)</b><br><b data-c="POST_START">12/11(금)</b>에 <b>앱 푸시 알림</b>과, 사전설문에 적은 <b>휴대폰 번호로 문자</b>를 보내드려요.</div>
+      <a class="btn btn-post" id="post-btn" href="#" aria-disabled="true"><span data-c="POST_BTN">사후설문은 12/11(금)에 열려요</span></a>
+    </div>
   </section>
 </div></div>
 
@@ -338,11 +367,12 @@
   <section id="schedule">
     <div class="sec-head"><div class="ko">일정</div></div>
     <h2>언제까지 하면 되나요?</h2>
-    <p class="lead">기프티콘은 테스트 기간이 끝난 뒤 한 번에 보내드려요.</p>
+    <p class="lead">사후설문까지 마치면, 기프티콘을 한 번에 보내드려요.</p>
     <div class="card timeline">
       <div class="tl"><span>모집 인원</span><strong>선착순 <span data-c="CAPACITY_TXT">500명</span></strong></div>
       <div class="tl hl"><span>테스트 기간 (집계 기간)</span><strong data-c="USE_PERIOD">11/28(토) ~ 12/11(금)</strong></div>
       <div class="tl"><span>마지막 기록 인정일</span><strong data-c="LAST_DAY">12/11(금)</strong></div>
+      <div class="tl post"><span>사후설문 작성</span><strong data-c="POST_PERIOD">12/11(금) ~ 12/13(일)</strong></div>
       <div class="tl"><span>기프티콘 발송</span><strong data-c="PAYOUT">12/14(월) ~ 12/15(화)</strong></div>
     </div>
     <div class="card bubble">
@@ -356,6 +386,7 @@
     <p class="lead">참여 전 아래 내용을 확인해 주세요.</p>
     <div class="card notice">
       <ul>
+        <li><b style="color:#4233EE">사전설문과 사후설문을 모두 제출해야 기프티콘이 지급돼요.</b> 미션을 달성해도 사후설문을 제출하지 않으면 지급되지 않아요.</li>
         <li>선착순 <span data-c="CAPACITY_TXT">500명</span>이 채워지면 모집이 조기 마감될 수 있어요.</li>
         <li>기록일과 보고서 생성일은 테스트 기간(<span data-c="USE_PERIOD">11/28(토) ~ 12/11(금)</span>) 안의 기록만 인정되며, 기관코드가 연결된 계정 기준으로 집계돼요.</li>
         <li>하루에 여러 번 기록해도 기록일은 1일로 집계돼요.</li>
@@ -378,6 +409,8 @@
         <p>네, 동의서 작성과 앱 가입·기관코드 연결은 미리 해두셔도 돼요(미션 01). 다만 기록과 보고서는 <span data-c="USE_START">11/28(토)</span>부터 한 것만 집계돼요.</p></details>
       <details><summary>이미 마음로그를 쓰고 있어요. 테스터로 참여할 수 있나요?</summary>
         <p>네. 동의서·사전설문을 작성한 뒤 기존 계정에 기관코드만 연결하면 돼요.</p></details>
+      <details><summary>사후설문은 언제, 어떻게 하나요?</summary>
+        <p><span data-c="POST_PERIOD">12/11(금) ~ 12/13(일)</span>에 작성해요. <span data-c="POST_START">12/11(금)</span>에 앱 푸시 알림과, 사전설문에 적은 휴대폰 번호로 문자를 보내드려요. 이 페이지의 4단계 버튼으로도 들어갈 수 있어요. 사후설문까지 제출해야 기프티콘이 지급돼요.</p></details>
       <details><summary>보고서 생성은 어떻게 하나요?</summary>
         <p>앱에서 오늘의 기록을 마친 뒤 보고서를 생성하면 그날의 보고서 생성일로 집계돼요.</p></details>
       <details><summary>미션 달성 여부는 어떻게 알 수 있나요?</summary>
@@ -426,11 +459,15 @@
     R1_TXT: won(C.REWARD_1), R2_TXT: won(C.REWARD_2), R3_TXT: '+' + won(C.REWARD_3),
     USE_PERIOD: C.USE_PERIOD, USE_START: C.USE_START, LAST_DAY: C.LAST_DAY, PAYOUT: C.PAYOUT,
     PAYOUT_SHORT: (C.PAYOUT||'').replace(/\([^)]*\)/g,'').replace(/\s/g,''),
-    CONTACT_NAME: C.CONTACT_NAME, CONTACT_EMAIL: C.CONTACT_EMAIL
+    CONTACT_NAME: C.CONTACT_NAME, CONTACT_EMAIL: C.CONTACT_EMAIL,
+    POST_PERIOD: C.POST_PERIOD, POST_START: C.POST_START,
+    POST_BTN: C.POST_FORM_URL ? '사후설문 작성하기' : '사후설문은 ' + String(C.POST_PERIOD||'').split('~')[0].trim() + '에 열려요'
   };
   document.querySelectorAll('[data-c]').forEach(function(el){
     var v = map[el.getAttribute('data-c')]; if (v) el.textContent = v;
   });
+  var pb = document.getElementById('post-btn');
+  if (pb && C.POST_FORM_URL) { pb.href = C.POST_FORM_URL; pb.removeAttribute('aria-disabled'); }
   document.querySelectorAll('[data-c-href="mailto"]').forEach(function(a){ if (C.CONTACT_EMAIL) a.href = 'mailto:' + C.CONTACT_EMAIL; });
   document.title = '마음로그 2주 테스터 모집 · 최대 ' + won(total) + ' 카페 기프티콘';
 
