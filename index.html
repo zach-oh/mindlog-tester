@@ -160,6 +160,13 @@
   .sticky.show{transform:none}
   .sticky .inner{max-width:520px;margin:0 auto}
 
+  /* 마스코트: 화면 아래(모바일은 신청 버튼 위)를 폴짝폴짝. 클릭은 통과시킴 */
+  .mascot{position:fixed;left:0;top:0;width:48px;height:48px;z-index:11;pointer-events:none;will-change:transform}
+  .mascot img{display:block;width:100%;height:100%;transform-origin:50% 100%;will-change:transform;
+              filter:drop-shadow(0 3px 4px rgba(232,69,90,.25))}
+  @media (min-width:960px){.mascot{width:56px;height:56px}}
+  @media (prefers-reduced-motion:reduce){.mascot{display:none}}
+
   /* ===== 태블릿 이상 ===== */
   @media (min-width:768px){
     .wrap{max-width:1120px;padding:0 32px}
@@ -383,6 +390,8 @@
   <a class="btn btn-brand" href="/go/form">2주 테스터 신청하기 · 선착순 <span data-c="CAPACITY_TXT">500명</span></a>
 </div></div>
 
+<div class="mascot" id="mascot" aria-hidden="true"><img src="/assets/mascot.png" alt=""></div>
+
 <script>
 (function(){
   var C = window.CONFIG || {};
@@ -405,6 +414,47 @@
   var sticky = document.getElementById('sticky');
   new IntersectionObserver(function(e){ sticky.classList.toggle('show', !e[0].isIntersecting); })
     .observe(document.querySelector('.hero'));
+
+  // 마스코트: 몇 번 폴짝폴짝 뛰고 잠깐 쉬기를 반복하며 화면 아래를 오간다
+  var m = document.getElementById('mascot');
+  if (m && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var img = m.firstChild, x = 24, dir = 1, phase = 'rest', t0 = 0, restFor = 800, hopsLeft = 0, last = 0;
+    var HOP_MS = 520, HOP_DX = 34, HOP_H = 30;
+    var stickyOn = function(){ return sticky.classList.contains('show') && getComputedStyle(sticky).display !== 'none'; };
+    var frame = function(now){
+      var dt = Math.min(now - (last || now), 50); last = now;
+      var size = m.offsetWidth, maxX = innerWidth - size - 12;
+      // 바닥: 모바일에서 하단 버튼이 보이면 버튼 윗면, 아니면 화면 아래
+      var ground = stickyOn() ? sticky.getBoundingClientRect().top + 12 : innerHeight - 10;
+      var y = 0, sx = 1, sy = 1;
+      if (phase === 'rest') {
+        // 쉬는 동안 살짝 숨쉬기
+        sy = 1 + Math.sin(now / 260) * 0.03; sx = 2 - sy;
+        if (now - t0 > restFor) { phase = 'hop'; t0 = now; hopsLeft = 3 + Math.floor(Math.random() * 4); }
+      } else {
+        var p = Math.min((now - t0) / HOP_MS, 1);
+        if (p < 0.15) { var q = p / 0.15; sy = 1 - 0.18 * Math.sin(q * Math.PI); sx = 2 - sy; }   // 웅크리기
+        else {
+          var a = (p - 0.15) / 0.85;
+          y = HOP_H * 4 * a * (1 - a);                                                     // 포물선
+          x += dir * HOP_DX * dt / (HOP_MS * 0.85);
+          sy = 1 + 0.12 * Math.sin(a * Math.PI); sx = 2 - sy;                            // 공중에서 길쭉
+        }
+        if (x > maxX) { x = maxX; dir = -1; } else if (x < 12) { x = 12; dir = 1; }
+        if (p >= 1) {
+          t0 = now; hopsLeft--;
+          if (hopsLeft <= 0) {
+            phase = 'rest'; restFor = 1200 + Math.random() * 2200;
+            if (Math.random() < 0.3) dir = -dir;
+          }
+        }
+      }
+      m.style.transform = 'translate(' + x.toFixed(1) + 'px,' + (ground - size - y).toFixed(1) + 'px)';
+      img.style.transform = 'scale(' + sx.toFixed(3) + ',' + sy.toFixed(3) + ')';
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(function(now){ t0 = now; frame(now); });
+  }
 })();
 </script>
 </body>
