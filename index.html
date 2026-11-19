@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>마음로그 2주 테스터 모집 · 최대 25,000원 카페 기프티콘</title>
+<title>마음로그 테스터 모집</title>
 <meta name="description" content="마음로그 2주 테스터를 모집합니다. 2주간 마음을 기록하고 카페 기프티콘 받아가세요. 선착순 500명.">
 <meta property="og:title" content="마음로그 2주 테스터 모집 (선착순 500명)">
 <meta property="og:description" content="참여 등록만 해도 5천원, 2주간 꾸준히 기록하면 최대 2만 5천원 카페 기프티콘">
@@ -16,7 +16,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://mindlog-tester.vercel.app/assets/og.jpg">
 <meta name="theme-color" content="#EA5060">
-<link rel="icon" href="/assets/logo.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <script src="/config.js"></script>
 <!-- Vercel Web Analytics (대시보드에서 Analytics 활성화 필요) -->
@@ -531,7 +533,6 @@
   var pb = document.getElementById('post-btn');
   if (pb && C.POST_FORM_URL) { pb.href = C.POST_FORM_URL; pb.removeAttribute('aria-disabled'); }
   document.querySelectorAll('[data-c-href="mailto"]').forEach(function(a){ if (C.CONTACT_EMAIL) a.href = 'mailto:' + C.CONTACT_EMAIL; });
-  document.title = '마음로그 2주 테스터 모집 · 최대 ' + won(total) + ' 카페 기프티콘';
 
   // 구글폼 확인 메시지의 링크(/done 또는 #step2)로 돌아오면 2단계로 바로 이동
   if (location.pathname.replace(/\/$/,'') === '/done' || location.hash === '#step2') {
