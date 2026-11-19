@@ -72,8 +72,17 @@
         background:linear-gradient(120deg,#E8455A 0%,#EA5060 45%,#F07F8B 100%)}
   .hero .waves{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
   .hero-grid{position:relative;z-index:1;display:grid;grid-template-areas:"copy" "stats" "cta"}
-  .hero-copy{grid-area:copy}.hero-stats{grid-area:stats}.hero-cta{grid-area:cta}.hero-visual{display:none}
+  .hero-copy{grid-area:copy;position:relative}.hero-stats{grid-area:stats}.hero-cta{grid-area:cta}.hero-visual{display:none}
   .company{font-size:14px;opacity:.9;margin-bottom:20px}
+  /* 첫 화면 마스코트: 제목 오른쪽에서 천천히 떠다님 */
+  .hero-mascot{position:absolute;right:0;top:64px;width:96px;height:96px;pointer-events:none;
+               filter:drop-shadow(0 10px 16px rgba(98,34,40,.25));animation:drift 9s ease-in-out infinite}
+  @keyframes drift{
+    0%,100%{transform:translate(0,0) rotate(-4deg)}
+    25%{transform:translate(-10px,-12px) rotate(2deg)}
+    50%{transform:translate(4px,-20px) rotate(5deg)}
+    75%{transform:translate(8px,-6px) rotate(-1deg)}
+  }
   .brandline{display:flex;align-items:center;gap:12px;font-size:30px;font-weight:800;letter-spacing:-.03em}
   .brandline img{width:44px;height:44px}
   .hero h1{font-size:40px;line-height:1.25;font-weight:800;letter-spacing:-.04em;margin:8px 0 14px}
@@ -240,6 +249,7 @@
     .hero-visual{display:block;grid-area:visual;align-self:end;justify-self:center;width:330px;margin-bottom:-90px;
                  filter:drop-shadow(0 24px 48px rgba(98,34,40,.30))}
     .company{font-size:16px;margin-bottom:32px}
+    .hero-mascot{width:132px;height:132px;top:120px;right:24px}
     .brandline{font-size:48px;gap:16px}
     .brandline img{width:64px;height:64px}
     .hero h1{font-size:68px;margin:10px 0 18px}
@@ -253,7 +263,7 @@
     html{scroll-behavior:smooth;scroll-padding-top:72px}
     #reward{padding-top:120px}
   }
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.sticky,.btn{transition:none}}
+  @media (prefers-reduced-motion:reduce){.hero-mascot{animation:none}html{scroll-behavior:auto}.sticky,.btn{transition:none}}
 
   /* ===== Miro 스타일 레이어 (DESIGN.md 참고) — 색은 그대로, 형태·타이포·깊이만 =====
      평평한 카드 + 얇은 테두리, 큰 둥근 모서리(24~28px), 알약형 태그 라벨, 중간 굵기 제목, 선형 FAQ */
@@ -326,6 +336,7 @@
       <div class="company">(주)정션메드</div>
       <div class="brandline"><img src="/assets/logo-white.png" alt="">마음로그:</div>
       <h1><small>2주 테스터</small>모집합니다</h1>
+      <img class="hero-mascot" src="/assets/mascot.png" alt="" aria-hidden="true">
       <p>2주 동안 마음로그로 오늘의 마음을 기록해 주세요.<br>참여만 해도 <b data-c="R1_TXT">5,000원</b>, 꾸준히 기록하면 <b>최대 <span data-c="TOTAL_TXT">25,000원</span></b></p>
     </div>
     <div class="hero-stats">
