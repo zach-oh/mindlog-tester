@@ -113,6 +113,16 @@
   .step .btn{margin-top:14px;height:50px;font-size:16px}
   .store-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
   .store-row .btn{margin-top:0}
+  .btn .ico{width:22px;height:22px;flex:none}
+  .btn-store{background:#111;color:#fff;border-radius:14px;height:56px;justify-content:center;gap:10px}
+  .btn-store span{display:flex;flex-direction:column;align-items:flex-start;line-height:1.1;font-size:16px;font-weight:700}
+  .btn-store small{font-size:10px;font-weight:500;opacity:.8;letter-spacing:0}
+  .btn-kakao{background:#FEE500;color:#191919;gap:10px;box-shadow:0 6px 18px rgba(254,229,0,.35)}
+  .btn-kakao .ico{width:24px;height:24px}
+  .inline-kakao{color:var(--brand);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+  .contact-card{background:var(--sub2);border:1px solid var(--pink-200);border-radius:20px;padding:28px 22px;display:flex;flex-direction:column;gap:22px}
+  .contact-actions .mail{margin-top:12px;font-size:14px;color:var(--sub);text-align:center}
+  .contact-actions .mail a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 
   /* TIMELINE */
   .timeline{padding:6px 20px}
@@ -170,6 +180,9 @@
     .total strong{font-size:30px}
     .step{display:flex;flex-direction:column;padding:28px 24px}
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+    .contact-card{flex-direction:row;align-items:center;justify-content:space-between;padding:40px 44px}
+    .contact-actions{min-width:340px}
+    .contact-actions .btn{width:100%}
     .faq-list{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;align-items:start}
     footer{padding:40px 0 56px}
     .btn{width:auto;padding:0 36px}
@@ -206,7 +219,7 @@
 
 <nav class="topnav"><div class="wrap">
   <a class="logo" href="#"><img src="/assets/logo.png" alt="">마음로그 <span>2주 테스터</span></a>
-  <div class="links"><a href="#reward">리워드</a><a href="#how">참여 방법</a><a href="#schedule">일정</a><a href="#faq">FAQ</a>
+  <div class="links"><a href="#reward">리워드</a><a href="#how">참여 방법</a><a href="#schedule">일정</a><a href="#faq">FAQ</a><a href="#contact">문의</a>
   <a class="nav-cta" href="/go/form">테스터 신청</a></div>
 </div></nav>
 
@@ -279,8 +292,8 @@
         <div class="step-head"><span class="n">2</span><h3>마음로그 앱 설치 · 회원가입</h3></div>
         <p>사용하는 휴대폰에 맞는 스토어에서 마음로그를 설치하고 가입해 주세요.</p>
         <div class="store-row">
-          <a class="btn btn-line" href="/go/ios">App Store</a>
-          <a class="btn btn-line" href="/go/android">Google Play</a>
+          <a class="btn btn-store" href="/go/ios"><svg class="ico" viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M256,32C132.26,32,32,132.26,32,256S132.26,480,256,480,480,379.74,480,256,379.74,32,256,32ZM171,353.89a15.48,15.48,0,0,1-13.46,7.65,14.91,14.91,0,0,1-7.86-2.16,15.48,15.48,0,0,1-5.6-21.21l15.29-25.42a8.73,8.73,0,0,1,7.54-4.3h2.26c11.09,0,18.85,6.67,21.11,13.13Zm129.45-50L200.32,304H133.77a15.46,15.46,0,0,1-15.51-16.15c.32-8.4,7.65-14.76,16-14.76h48.24l57.19-97.35h0l-18.52-31.55C217,137,218.85,127.52,226,123a15.57,15.57,0,0,1,21.87,5.17l9.9,16.91h.11l9.91-16.91A15.58,15.58,0,0,1,289.6,123c7.11,4.52,8.94,14,4.74,21.22l-18.52,31.55-18,30.69-39.09,66.66v.11h57.61c7.22,0,16.27,3.88,19.93,10.12l.32.65c3.23,5.49,5.06,9.26,5.06,14.75A13.82,13.82,0,0,1,300.48,303.92Zm77.75.11H351.09v.11l19.82,33.71a15.8,15.8,0,0,1-5.17,21.53,15.53,15.53,0,0,1-8.08,2.27A15.71,15.71,0,0,1,344.2,354l-29.29-49.86-18.2-31L273.23,233a38.35,38.35,0,0,1-.65-38c4.64-8.19,8.19-10.34,8.19-10.34L333,273h44.91c8.4,0,15.61,6.46,16,14.75A15.65,15.65,0,0,1,378.23,304Z"/></svg><span><small>Download on the</small>App Store</span></a>
+          <a class="btn btn-store" href="/go/android"><svg class="ico" viewBox="0 0 512 512" aria-hidden="true"><g fill="currentColor"><path d="M48,59.49v393a4.33,4.33,0,0,0,7.37,3.07L260,256,55.37,56.42A4.33,4.33,0,0,0,48,59.49Z"/><path d="M345.8,174,89.22,32.64l-.16-.09c-4.42-2.4-8.62,3.58-5,7.06L285.19,231.93Z"/><path d="M84.08,472.39c-3.64,3.48.56,9.46,5,7.06l.16-.09L345.8,338l-60.61-57.95Z"/><path d="M449.38,231l-71.65-39.46L310.36,256l67.37,64.43L449.38,281C468.87,270.23,468.87,241.77,449.38,231Z"/></g></svg><span><small>GET IT ON</small>Google Play</span></a>
         </div>
       </div>
       <div class="card step">
@@ -330,10 +343,10 @@
   <section id="faq" style="padding-bottom:64px">
     <div class="sec-head"><div class="ko">자주 묻는 질문<span class="en">FAQ</span></div></div>
     <h2>궁금한 점이 있나요?</h2>
-    <p class="lead">더 궁금한 점은 아래 문의처로 연락 주세요.</p>
+    <p class="lead">더 궁금한 점은 <a class="inline-kakao" href="/go/kakao">카카오톡 채널</a>로 편하게 물어보세요.</p>
     <div class="faq-list">
       <details><summary>기관코드를 잊어버렸어요.</summary>
-        <p>구글폼 제출 완료 화면에서만 안내돼요. 다시 확인이 필요하면 아래 문의처로 동의서에 적은 이름과 휴대폰 번호를 보내주세요.</p></details>
+        <p>구글폼 제출 완료 화면에서만 안내돼요. 다시 확인이 필요하면 카카오톡 채널로 동의서에 적은 이름과 휴대폰 번호를 보내주세요.</p></details>
       <details><summary>지금 신청해도 되나요?</summary>
         <p>네, 동의서 작성과 앱 가입·기관코드 연결은 미리 해두셔도 돼요(미션 01). 다만 기록과 보고서는 <span data-c="USE_START">11/28(토)</span>부터 한 것만 집계돼요.</p></details>
       <details><summary>이미 마음로그를 쓰고 있어요. 테스터로 참여할 수 있나요?</summary>
@@ -346,12 +359,26 @@
         <p>동의서에 안내된 목적(연구 및 리워드 지급) 범위 안에서만 쓰이며, 자세한 내용은 동의서에서 확인할 수 있어요.</p></details>
     </div>
   </section>
+
+  <section id="contact" style="padding-top:0;padding-bottom:64px">
+    <div class="contact-card">
+      <div>
+        <div class="sec-head" style="margin-bottom:10px"><div class="ko">문의<span class="en">Contact</span></div></div>
+        <h2>궁금한 점은 <b>카카오톡</b>으로<br>바로 물어보세요</h2>
+        <p class="lead" style="margin-bottom:0">참여 방법, 기관코드, 기프티콘 발송 등 무엇이든 답해 드려요.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-kakao" href="/go/kakao"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.48 3 2 6.48 2 10.78c0 2.77 1.86 5.2 4.66 6.58l-.95 3.48c-.08.3.26.54.52.37l4.13-2.73c.54.06 1.08.1 1.64.1 5.52 0 10-3.48 10-7.8S17.52 3 12 3Z"/></svg>카카오톡으로 문의하기</a>
+        <p class="mail">이메일 <a data-c-href="mailto" data-c="CONTACT_EMAIL" href="#">contact@junctionmed.com</a></p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer><div class="wrap">
   <div class="f-logo"><img src="/assets/logo.png" alt="">마음로그 · (주)정션메드</div>
   <p data-c="CONTACT_NAME">정션메드 AX 실증사업 담당</p>
-  <p>문의 <a data-c-href="mailto" data-c="CONTACT_EMAIL" href="#">이메일</a><span id="kakao-wrap"></span></p>
+  <p>문의 <a href="/go/kakao">카카오톡 채널</a> · <a data-c-href="mailto" data-c="CONTACT_EMAIL" href="#">contact@junctionmed.com</a></p>
   <p class="copy">Copyright © Junction Med. All Rights Reserved.</p>
 </div></footer>
 
@@ -375,10 +402,7 @@
   document.querySelectorAll('[data-c]').forEach(function(el){
     var v = map[el.getAttribute('data-c')]; if (v) el.textContent = v;
   });
-  var mail = document.querySelector('[data-c-href="mailto"]');
-  if (mail && C.CONTACT_EMAIL) mail.href = 'mailto:' + C.CONTACT_EMAIL;
-  if (C.CONTACT_KAKAO) document.getElementById('kakao-wrap').innerHTML =
-    ' · <a href="' + C.CONTACT_KAKAO + '" target="_blank" rel="noopener">카카오톡 채널</a>';
+  document.querySelectorAll('[data-c-href="mailto"]').forEach(function(a){ if (C.CONTACT_EMAIL) a.href = 'mailto:' + C.CONTACT_EMAIL; });
   document.title = '마음로그 2주 테스터 모집 · 최대 ' + won(total) + ' 카페 기프티콘';
 
   var sticky = document.getElementById('sticky');

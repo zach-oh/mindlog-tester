@@ -5,8 +5,8 @@
 window.CONFIG = {
   // 링크
   FORM_URL:    "https://forms.gle/REPLACE_ME",                       // 동의서 + 사전설문 구글폼
-  ANDROID_URL: "https://play.google.com/store/apps/details?id=REPLACE_ME", // 마음로그 Android
-  IOS_URL:     "https://apps.apple.com/kr/app/REPLACE_ME",           // 마음로그 iOS
+  ANDROID_URL: "https://m.site.naver.com/2cGYm", // 마음로그 Android (Google Play)
+  IOS_URL:     "https://m.site.naver.com/2cGX3",  // 마음로그 iOS (App Store)
 
   // 리워드 (예산 상세안 기준으로 수정)
   REWARD_1: 5000,   // 동의서·사전설문 + 가입 + 기관코드 연결
@@ -22,6 +22,6 @@ window.CONFIG = {
 
   // 문의
   CONTACT_NAME: "정션메드 AX 실증사업 담당",
-  CONTACT_EMAIL: "REPLACE_ME@junctionmed.com",
-  CONTACT_KAKAO: ""                       // 카카오 채널 링크(없으면 비워두기)
+  CONTACT_EMAIL: "contact@junctionmed.com",
+  CONTACT_KAKAO: "https://m.site.naver.com/2jDEg" // 카카오톡 비즈니스 채널
 };
