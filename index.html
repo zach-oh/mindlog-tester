@@ -43,6 +43,17 @@
   h2{font-size:24px;font-weight:700;letter-spacing:-.03em;line-height:1.35;margin-bottom:6px}
   h2 b{color:var(--brand)}
   .lead{color:var(--sub);font-size:15px;margin-bottom:22px}
+  /* 소요 시간 스티커 (참여 방법 제목 오른쪽) */
+  .how-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .time-sticker{flex:none;display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:800;color:#3A2A00;
+                background:#FFE14D;border-radius:999px;padding:7px 13px 7px 11px;margin-bottom:22px;
+                transform:rotate(6deg);box-shadow:0 3px 8px rgba(255,180,0,.4);white-space:nowrap}
+  .time-sticker svg{width:14px;height:14px;flex:none}
+  /* 좁은 화면: 제목이 줄바꿈되지 않도록 스티커를 섹션 구분선 위로 */
+  @media (max-width:419px){
+    .how-head{position:relative;display:block}
+    .time-sticker{position:absolute;right:0;top:-46px;margin:0;background:#FFE14D}
+  }
 
   /* TOP NAV (PC) */
   .topnav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
@@ -281,8 +292,13 @@
 <div class="band"><div class="wrap">
   <section id="how">
     <div class="sec-head"><div class="ko">참여 방법</div></div>
-    <h2><b>3단계</b>면 테스터 등록 끝</h2>
-    <p class="lead">5분 정도 걸려요. 순서대로 진행해 주세요.</p>
+    <div class="how-head">
+      <div>
+        <h2><b>3단계</b>면 테스터 등록 끝</h2>
+        <p class="lead">순서대로 진행해 주세요.</p>
+      </div>
+      <span class="time-sticker"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M8 4.6V8l2.3 1.5"/></svg>약 5~10분 소요</span>
+    </div>
     <div class="steps">
       <div class="card step">
         <div class="step-head"><span class="n">1</span><h3>동의서 · 사전설문 작성</h3></div>
