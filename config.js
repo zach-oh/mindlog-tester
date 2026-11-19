@@ -4,7 +4,7 @@
 // ============================================================
 window.CONFIG = {
   // 링크
-  FORM_URL:    "https://forms.gle/REPLACE_ME",                       // 동의서 + 사전설문 구글폼
+  FORM_URL:    "https://forms.gle/n863Eu7iDF7ntf986",                       // 동의서 + 사전설문 구글폼
   ANDROID_URL: "https://m.site.naver.com/2cGYm", // 마음로그 Android (Google Play)
   IOS_URL:     "https://m.site.naver.com/2cGX3",  // 마음로그 iOS (App Store)
 

@@ -5,6 +5,7 @@
     { "source": "/fb", "destination": "/" },
     { "source": "/kakao", "destination": "/" },
     { "source": "/blog", "destination": "/" },
-    { "source": "/naver", "destination": "/" }
+    { "source": "/naver", "destination": "/" },
+    { "source": "/done", "destination": "/" }
   ]
 }

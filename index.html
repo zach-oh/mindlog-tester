@@ -119,6 +119,15 @@
   .hint{margin-top:12px;font-size:13.5px;background:var(--pink-100);color:var(--pink-400);border-radius:12px;padding:10px 12px}
   .hint b{color:var(--brand)}
   .step .btn{margin-top:14px;height:50px;font-size:16px}
+
+  /* 설문 완료 후 돌아온 사람(/done)에게 2단계 강조 */
+  #step2{scroll-margin-top:16px}
+  .arrive-note{display:none;align-items:flex-start;gap:8px;margin-bottom:14px;padding:12px 14px;border-radius:12px;
+               background:#E9F8EF;color:#14532D;font-size:14px;font-weight:600;line-height:1.5}
+  .arrive-note b{color:#15803D}
+  .arrived .arrive-note{display:flex}
+  .arrived #step2{box-shadow:0 0 0 3px var(--brand),var(--shadow);animation:arrive 1.2s ease-out 2}
+  @keyframes arrive{0%{box-shadow:0 0 0 0 rgba(234,80,96,.55),var(--shadow)}100%{box-shadow:0 0 0 14px rgba(234,80,96,0),var(--shadow)}}
   .store-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
   .store-row .btn{margin-top:0}
   .btn .ico{width:22px;height:22px;flex:none}
@@ -306,7 +315,8 @@
         <div class="hint">제출 완료 화면에서 <b>기관코드</b>를 확인할 수 있어요. 꼭 메모하거나 캡처해 두세요.</div>
         <a class="btn btn-brand" href="/go/form">동의서 · 설문 작성하기</a>
       </div>
-      <div class="card step">
+      <div class="card step" id="step2">
+        <div class="arrive-note" role="status"><span aria-hidden="true">✅</span><span>설문 제출 완료! <b>기관코드를 캡처</b>하셨나요?<br>이제 아래에서 앱을 설치해 주세요.</span></div>
         <div class="step-head"><span class="n">2</span><h3>마음로그 앱 설치 · 회원가입</h3></div>
         <p>사용하는 휴대폰에 맞는 스토어에서 마음로그를 설치하고 가입해 주세요.</p>
         <div class="store-row">
@@ -423,6 +433,14 @@
   });
   document.querySelectorAll('[data-c-href="mailto"]').forEach(function(a){ if (C.CONTACT_EMAIL) a.href = 'mailto:' + C.CONTACT_EMAIL; });
   document.title = '마음로그 2주 테스터 모집 · 최대 ' + won(total) + ' 카페 기프티콘';
+
+  // 구글폼 확인 메시지의 링크(/done 또는 #step2)로 돌아오면 2단계로 바로 이동
+  if (location.pathname.replace(/\/$/,'') === '/done' || location.hash === '#step2') {
+    document.body.classList.add('arrived');
+    var s2 = document.getElementById('step2');
+    var go = function(){ s2.scrollIntoView({block:'start'}); };
+    go(); addEventListener('load', go);
+  }
 
   var sticky = document.getElementById('sticky');
   new IntersectionObserver(function(e){ sticky.classList.toggle('show', !e[0].isIntersecting); })
