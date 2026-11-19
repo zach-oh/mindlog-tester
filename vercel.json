@@ -1,10 +1,10 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/ig", "destination": "/index.html" },
-    { "source": "/fb", "destination": "/index.html" },
-    { "source": "/kakao", "destination": "/index.html" },
-    { "source": "/blog", "destination": "/index.html" },
-    { "source": "/naver", "destination": "/index.html" }
+    { "source": "/ig", "destination": "/" },
+    { "source": "/fb", "destination": "/" },
+    { "source": "/kakao", "destination": "/" },
+    { "source": "/blog", "destination": "/" },
+    { "source": "/naver", "destination": "/" }
   ]
 }
