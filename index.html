@@ -107,18 +107,16 @@
   .reward h3 u{text-decoration:none;color:var(--brand)}
   .reward p{font-size:14px;color:var(--sub);margin-top:2px}
   .reward .amt{font-weight:800;font-size:24px;color:var(--brand);letter-spacing:-.03em}
-  .total{margin-top:14px;background:var(--brand);color:#fff;border-radius:var(--radius);padding:20px 22px;display:flex;
-         justify-content:space-between;align-items:center}
-  .total{gap:12px;flex-wrap:wrap}
-  .total > span{flex:1 1 220px}
-  .total strong{margin-left:auto}
-  .total > span{font-size:15px;font-weight:600;line-height:1.75}
-  .total strong{flex:none}
-  .total .post-chip{display:inline-block;background:#fff;color:#4233EE;font-size:13px;font-weight:800;border-radius:999px;
-                    padding:1px 10px;margin-right:2px;white-space:nowrap}
+  /* 합계 카드: 안쪽 여백 사방 동일, 줄 간격·칩 간격 고정 */
+  .total{margin-top:12px;background:var(--brand);color:#fff;border-radius:var(--radius);padding:24px;
+         display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
+  .total-cond{flex:1 1 240px;display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:600;line-height:1.4}
+  .total-cond .row{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+  .total .post-chip{display:inline-block;background:#fff;color:#4233EE;font-size:13px;font-weight:800;line-height:1.3;
+                    border-radius:999px;padding:4px 10px;white-space:nowrap}
   .total .post-chip em{font-style:normal}
-  .total-note{margin-top:10px;font-size:13px;color:var(--sub)}
-  .total strong{font-size:24px;font-weight:800}
+  .total strong{flex:none;margin-left:auto;font-size:24px;font-weight:800;line-height:1.2}
+  .total-note{margin-top:12px;padding:0 0 0 24px;font-size:13px;color:var(--sub)}
 
   /* STEPS */
   .steps{display:flex;flex-direction:column;gap:12px}
@@ -221,7 +219,8 @@
     .reward{padding:28px 24px}
     .reward h3{font-size:17px}
     .reward .amt{font-size:28px;margin-top:auto;padding-top:10px}
-    .total{padding:26px 32px;margin-top:20px}
+    .total{padding:32px;margin-top:20px}
+    .total-note{padding:0 32px}
     .total strong{font-size:30px}
     .step{display:flex;flex-direction:column;padding:28px 24px}
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px}
@@ -363,10 +362,13 @@
       </div>
     </div>
     <div class="total">
-      <span>미션을 모두 달성하고<br><b class="post-chip">사후설문 <em data-c="POST_PERIOD">12/11(금) ~ 12/13(일)</em></b>까지 완료하면</span>
+      <div class="total-cond">
+        <span>미션을 모두 달성하고</span>
+        <span class="row"><b class="post-chip">사후설문 <em data-c="POST_PERIOD">12/11(금) ~ 12/13(일)</em></b>까지 완료하면</span>
+      </div>
       <strong>최대 <span data-c="TOTAL_TXT">25,000원</span></strong>
     </div>
-    <p class="total-note">※ 사전설문과 사후설문을 모두 제출해야 기프티콘이 지급돼요.</p>
+    <p class="total-note">※ 사전·사후설문을 모두 제출해야 기프티콘이 지급돼요.</p>
   </section>
 </main>
 
@@ -455,8 +457,6 @@
     <div class="faq-list">
       <details><summary>기관코드를 잊어버렸어요.</summary>
         <p>구글폼 제출 완료 화면에서만 안내돼요. 다시 확인이 필요하면 카카오톡 채널로 동의서에 적은 이름과 휴대폰 번호를 보내주세요.</p></details>
-      <details><summary>지금 신청해도 되나요?</summary>
-        <p>네, 동의서 작성과 앱 가입·기관코드 연결은 미리 해두셔도 돼요(미션 01). 다만 기록과 보고서는 <span data-c="USE_START">11/28(토)</span>부터 한 것만 집계돼요.</p></details>
       <details><summary>이미 마음로그를 쓰고 있어요. 테스터로 참여할 수 있나요?</summary>
         <p>네. 동의서·사전설문을 작성한 뒤 기존 계정에 기관코드만 연결하면 돼요.</p></details>
       <details><summary>사후설문은 언제, 어떻게 하나요?</summary>
