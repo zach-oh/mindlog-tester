@@ -246,6 +246,9 @@
     .topnav{display:block}
     .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
     .step .btn,.store-row{margin-top:auto}
+    /* 내용이 꽉 찬 카드(/done의 2단계)에서도 버튼 위 최소 간격 유지 */
+    .store-row{padding-top:16px}
+    .arrive-note{margin-bottom:18px}
     .step .hint{margin-bottom:16px}
     .step:last-child .hint{margin:auto 0 0}
     /* 4단계(사후설문) 카드는 섹션의 마지막 요소라 위 규칙이 걸려 간격이 사라짐 → 따로 지정 */
