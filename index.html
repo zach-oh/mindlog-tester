@@ -165,6 +165,10 @@
   .btn-store small{font-size:10px;font-weight:500;opacity:.8;letter-spacing:0}
   .btn-kakao{background:#FEE500;color:#191919;gap:10px;box-shadow:0 6px 18px rgba(254,229,0,.35)}
   .btn-kakao .ico{width:24px;height:24px}
+  .how-link{display:inline-block;margin-top:10px;font-size:14px;font-weight:600;color:var(--brand);text-decoration:underline;text-underline-offset:3px}
+  #faq-org{scroll-margin-top:16px}
+  .faq-img{display:block;margin:0 0 20px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+  .faq-img img{display:block;width:100%;height:auto}
   .inline-kakao{color:var(--brand);font-weight:700;text-decoration:underline;text-underline-offset:3px}
   .contact-card{background:var(--sub2);border:1px solid var(--pink-200);border-radius:20px;padding:28px 22px;display:flex;flex-direction:column;gap:22px}
   .contact-actions .mail{margin-top:12px;font-size:14px;color:var(--sub);text-align:center}
@@ -238,6 +242,7 @@
     .contact-actions{min-width:340px}
     .contact-actions .btn{width:100%}
     .faq-list{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;align-items:start}
+    .faq-list .faq-wide{grid-column:1/-1}
     footer{padding:40px 0 56px}
     .btn{width:auto;padding:0 36px}
     .step .btn,.store-row .btn,.sticky .btn{width:100%;padding:0 12px;white-space:nowrap}
@@ -419,6 +424,7 @@
       <div class="card step">
         <div class="step-head"><span class="n">3</span><h3>앱에서 기관코드 입력</h3></div>
         <p>1단계에서 받은 기관코드를 앱에 입력하면 테스터 등록이 끝나요. 코드를 입력해야지만 기록이 집계돼요.</p>
+        <a class="how-link" href="#faq-org">기관코드 등록방법<span aria-hidden="true"> ›</span></a>
         <div class="hint">여기까지 하면 <b>미션 01 달성!</b> 기록은 <b data-c="USE_START">11/28(토)</b>부터 집계되니, 그날부터 매일 기록하고 보고서를 만들어 주세요.</div>
       </div>
     </div>
@@ -473,6 +479,9 @@
     <h2>궁금한 점이 있나요?</h2>
     <p class="lead">더 궁금한 점은 <a class="inline-kakao" href="/go/kakao">카카오톡 채널</a>로 편하게 물어보세요.</p>
     <div class="faq-list">
+      <details id="faq-org" class="faq-wide"><summary>기관코드는 어떻게 등록하나요?</summary>
+        <p>회원가입 중 '기관 연결(선택)' 화면에서 <b>기관코드가 있어요</b>를 누르고, 받은 기관코드를 입력한 뒤 학번 입력과 동의를 마치면 연결돼요. 이미 가입했다면 앱의 '마이' &gt; '기관연결'에서 똑같이 입력하면 돼요.</p>
+        <a class="faq-img" href="/assets/org-guide.webp" target="_blank" rel="noopener"><img src="/assets/org-guide.webp" width="2000" height="850" loading="lazy" alt="회원가입 화면 순서: 언어 선택, 기관 연결에서 '기관코드가 있어요' 선택, 기관코드 입력, 학번 입력과 동의 후 기관 연결 완료"></a></details>
       <details><summary>기관코드를 잊어버렸어요.</summary>
         <p>구글폼 제출 완료 화면에서만 안내돼요. 다시 확인이 필요하면 카카오톡 채널로 동의서에 적은 이름과 휴대폰 번호를 보내주세요.</p></details>
       <details><summary>이미 마음로그를 쓰고 있어요. 테스터로 참여할 수 있나요?</summary>
@@ -545,6 +554,14 @@
     var go = function(){ s2.scrollIntoView({block:'start'}); };
     go(); addEventListener('load', go);
   }
+
+  // '기관코드 등록방법' 링크: FAQ 해당 항목을 펼친 뒤 그 위치로 이동
+  var faqOrg = document.getElementById('faq-org');
+  var openOrg = function(){ if (location.hash === '#faq-org') faqOrg.open = true; };
+  document.querySelectorAll('a[href="#faq-org"]').forEach(function(a){
+    a.addEventListener('click', function(){ faqOrg.open = true; });
+  });
+  openOrg(); addEventListener('hashchange', openOrg);
 
   var sticky = document.getElementById('sticky');
   new IntersectionObserver(function(e){ sticky.classList.toggle('show', !e[0].isIntersecting); })
